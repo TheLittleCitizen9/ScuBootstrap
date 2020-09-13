@@ -1,0 +1,49 @@
+.btn{
+    background-color: darkcyan;
+    color: white;
+}
+
+.btn:hover{
+    background-color: cadetblue;
+}
+
+
+div {
+    display: block;
+}
+
+.col-md{
+    border: black;
+}
+
+.btn-cart > img{
+    max-width: 10%;
+    max-height: 10%;
+}
+
+.product{
+    font-weight: bolder;
+}
+
+.pic{
+    height: 35vh;
+    width: 15vw;   
+}
+
+ul{
+    list-style-type: none;
+    margin: 0px;
+    padding: 15px 10px;
+    text-align: right;
+}
+
+li{
+    display: inline;
+    opacity: 1;
+}
+
+#logo{
+    font-weight: bolder;
+    color: #20B2AA;
+    font-size: x-large;
+}
