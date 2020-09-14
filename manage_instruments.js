@@ -68,6 +68,10 @@ var violin = {
 
 var allInstruments = [halil, chromonica, hatzotzra, trombon, klarinet, violin]
 var instrumentsCurrentShowing = [halil, chromonica, hatzotzra, trombon, klarinet, violin]
+var tempInstruments = []
+var filteredByTypeInstruments = []
+var filteredByTextInstruments = []
+var filteredByPriceInstruments = []
 
 window.onload = function() {
     allInstruments.forEach(showOnSite)
@@ -91,73 +95,78 @@ function showOnSite(instrument){
     document.getElementById("instruments").innerHTML += instrumentElement
 }
 
-function filterByType(e){
+
+function filterInstruments(){
+    filterByType()
+    filterByText()
+    filterByPrice()
+    filteredByTypeInstruments = filteredByTypeInstruments.filter(value => filteredByTextInstruments.indexOf(value) !== -1)
+
+    
+    filteredByTypeInstruments = filteredByTypeInstruments.filter(value => filteredByPriceInstruments.indexOf(value) !== -1)
+    
     document.getElementById("instruments").innerHTML = ""
-    instrumentsCurrentShowing = []
-    var t = e.options[e.selectedIndex].text
+    filteredByTypeInstruments.forEach(showOnSite)
+}
+
+function filterByType(){
+    filteredByTypeInstruments = []
+    var a = document.getElementById("dropdown")
+    var t = a.options[a.selectedIndex].text
     allInstruments.forEach(function(instrument){
         if(t == instrument.instrumentType.name){
-            instrumentsCurrentShowing.push(instrument)
-            showOnSite(instrument)
+            filteredByTypeInstruments.push(instrument)
         }else if(t == "סוג כלי נגינה"){
-            instrumentsCurrentShowing.push(instrument)
-            showOnSite(instrument)
+            filteredByTypeInstruments.push(instrument)
         }
     })
 }
 
 function filterByText(){
-    document.getElementById("instruments").innerHTML = ""
+    filteredByTextInstruments = []
     var t = document.getElementById("search").value
-    instrumentsCurrentShowing.forEach(function(instrument){
+    allInstruments.forEach(function(instrument){
         if(instrument.name.includes(t)){
-            showOnSite(instrument)
+            filteredByTextInstruments.push(instrument)
     }})
 }
 
 function filterByPrice(){
-    var tempInstruments = []
-    document.getElementById("instruments").innerHTML = ""
+    filteredByPriceInstruments = []
     if(document.getElementById("checkbox1").checked){
-        instrumentsCurrentShowing.forEach(function(instrument){
+        allInstruments.forEach(function(instrument){
             if(instrument.price < 500){
-                showOnSite(instrument)
-                tempInstruments.push(instrument)
+                filteredByPriceInstruments.push(instrument)
             }
         })
     }else if(document.getElementById("checkbox2").checked){
-        instrumentsCurrentShowing.forEach(function(instrument){
+        allInstruments.forEach(function(instrument){
             if(instrument.price >= 500 && instrument.price < 1000){
-                showOnSite(instrument)
-                tempInstruments.push(instrument)
+                filteredByPriceInstruments.push(instrument)
             }
         })
     }else if(document.getElementById("checkbox3").checked){
-        instrumentsCurrentShowing.forEach(function(instrument){
+        allInstruments.forEach(function(instrument){
             if(instrument.price > 1000 && instrument.price <= 1500){
-                showOnSite(instrument)
-                tempInstruments.push(instrument)
+                filteredByPriceInstruments.push(instrument)
             }
         })
     }else if(document.getElementById("checkbox4").checked){
-        instrumentsCurrentShowing.forEach(function(instrument){
+        allInstruments.forEach(function(instrument){
             if(instrument.price > 1500 && instrument.price <= 2000){
-                showOnSite(instrument)
-                tempInstruments.push(instrument)
+                filteredByPriceInstruments.push(instrument)
             }
         })
     }else if(document.getElementById("checkbox5").checked){
-        instrumentsCurrentShowing.forEach(function(instrument){
+        allInstruments.forEach(function(instrument){
             if(instrument.price > 2000){
-                showOnSite(instrument)
-                tempInstruments.push(instrument)
+                filteredByPriceInstruments.push(instrument)
             }
         })
     }else{
-        instrumentsCurrentShowing.forEach(function(instrument){
+        allInstruments.forEach(function(instrument){
             showOnSite(instrument)
-            tempInstruments.push(instrument)
+            filteredByPriceInstruments.push(instrument)
         })
     }
-    instrumentsCurrentShowing = tempInstruments
 }
