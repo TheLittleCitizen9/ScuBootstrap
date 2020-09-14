@@ -57,7 +57,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <select id="dropdown" onchange="filterInstrument(this)">
+                        <select id="dropdown" onchange="filterByType(this)">
                             <option selected>סוג כלי נגינה</option>
                             <option value="Select an option">נשיפה</option>
                             <option value="Select an option">הקשה</option>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <div class="search-container">
+                        <div class="search-container" oninput="filterByText()">
                             <input class="form-control" type="text" id="search" name="search" placeholder="חיפוש כלי נגינה">
                         </div>
                     </div>

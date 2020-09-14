@@ -55,18 +55,19 @@ var klarinet = {
     typeID: 1
 }
 var violin = {
-    description: "כינור2",
+    description: "כינור קטן",
     id: 6,
     imagePath: "",
     instrumentOrders: null,
 
     instrumentType: {id:1, name:"מיתר"},
-    name: "כינור קטן",
+    name: "2כינור",
     price:2300,
     typeID: 1
 }
 
 var allInstruments = [halil, chromonica, hatzotzra, trombon, klarinet, violin]
+var instrumentsCurrentShowing = [halil, chromonica, hatzotzra, trombon, klarinet, violin]
 
 window.onload = function() {
     allInstruments.forEach(showOnSite)
@@ -90,14 +91,26 @@ function showOnSite(instrument){
     document.getElementById("instruments").innerHTML += instrumentElement
 }
 
-function filterInstrument(e){
+function filterByType(e){
     document.getElementById("instruments").innerHTML = ""
+    instrumentsCurrentShowing = []
     var t = e.options[e.selectedIndex].text
     allInstruments.forEach(function(instrument){
         if(t == instrument.instrumentType.name){
+            instrumentsCurrentShowing.push(instrument)
             showOnSite(instrument)
         }else if(t == "סוג כלי נגינה"){
+            instrumentsCurrentShowing.push(instrument)
             showOnSite(instrument)
         }
     })
+}
+
+function filterByText(){
+    document.getElementById("instruments").innerHTML = ""
+    var t = document.getElementById("search").value
+    instrumentsCurrentShowing.forEach(function(instrument){
+        if(instrument.name.includes(t)){
+            showOnSite(instrument)
+    }})
 }
