@@ -91,6 +91,7 @@ function showOnSite(instrument){
 }
 
 document.querySelector('#dropdown').addEventListener('click', function(e){
+    document.getElementById("instruments").innerHTML = ""
     allInstruments.forEach(function(instrument){
         if(e.innerHTML == instrument.instrumentType.name){
             showOnSite(instrument)
