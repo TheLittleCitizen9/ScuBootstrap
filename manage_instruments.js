@@ -67,8 +67,6 @@ var violin = {
 }
 
 var allInstruments = [halil, chromonica, hatzotzra, trombon, klarinet, violin]
-var instrumentsCurrentShowing = [halil, chromonica, hatzotzra, trombon, klarinet, violin]
-var tempInstruments = []
 var filteredByTypeInstruments = []
 var filteredByTextInstruments = []
 var filteredByPriceInstruments = []
