@@ -99,7 +99,6 @@ function filterInstruments(){
     filterByText()
     filterByPrice()
     filteredByTypeInstruments = filteredByTypeInstruments.filter(value => filteredByTextInstruments.indexOf(value) !== -1)
-
     
     filteredByTypeInstruments = filteredByTypeInstruments.filter(value => filteredByPriceInstruments.indexOf(value) !== -1)
     
@@ -109,12 +108,12 @@ function filterInstruments(){
 
 function filterByType(){
     filteredByTypeInstruments = []
-    var a = document.getElementById("dropdown")
-    var t = a.options[a.selectedIndex].text
+    var dropdown = document.getElementById("dropdown")
+    var text = dropdown.options[dropdown.selectedIndex].text
     allInstruments.forEach(function(instrument){
-        if(t == instrument.instrumentType.name){
+        if(text == instrument.instrumentType.name){
             filteredByTypeInstruments.push(instrument)
-        }else if(t == "סוג כלי נגינה"){
+        }else if(text == "סוג כלי נגינה"){
             filteredByTypeInstruments.push(instrument)
         }
     })
@@ -145,19 +144,19 @@ function filterByPrice(){
         })
     }else if(document.getElementById("checkbox3").checked){
         allInstruments.forEach(function(instrument){
-            if(instrument.price > 1000 && instrument.price <= 1500){
+            if(instrument.price >= 1000 && instrument.price < 1500){
                 filteredByPriceInstruments.push(instrument)
             }
         })
     }else if(document.getElementById("checkbox4").checked){
         allInstruments.forEach(function(instrument){
-            if(instrument.price > 1500 && instrument.price <= 2000){
+            if(instrument.price >= 1500 && instrument.price < 2000){
                 filteredByPriceInstruments.push(instrument)
             }
         })
     }else if(document.getElementById("checkbox5").checked){
         allInstruments.forEach(function(instrument){
-            if(instrument.price > 2000){
+            if(instrument.price >= 2000){
                 filteredByPriceInstruments.push(instrument)
             }
         })
