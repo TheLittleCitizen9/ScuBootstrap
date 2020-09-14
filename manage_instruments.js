@@ -90,11 +90,14 @@ function showOnSite(instrument){
     document.getElementById("instruments").innerHTML += instrumentElement
 }
 
-document.querySelector('#dropdown').addEventListener('click', function(e){
+function filterInstrument(e){
     document.getElementById("instruments").innerHTML = ""
+    var t = e.options[e.selectedIndex].text
     allInstruments.forEach(function(instrument){
-        if(e.innerHTML == instrument.instrumentType.name){
+        if(t == instrument.instrumentType.name){
+            showOnSite(instrument)
+        }else if(t == "סוג כלי נגינה"){
             showOnSite(instrument)
         }
     })
-})
+}
