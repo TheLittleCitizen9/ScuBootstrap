@@ -47,3 +47,16 @@ li{
     color: #20B2AA;
     font-size: x-large;
 }
+
+.checkbox{
+    text-align: right;
+    display: block;
+    margin: inherit;
+}
+
+.search-container{
+    text-align: right;
+}
+.row{
+    text-align: right;
+}

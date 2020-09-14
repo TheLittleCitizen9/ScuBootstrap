@@ -68,12 +68,14 @@ var violin = {
 
 var allInstruments = [halil, chromonica, hatzotzra, trombon, klarinet, violin]
 
-
+window.onload = function() {
+    allInstruments.forEach(showOnSite)
+}
 
 function showOnSite(instrument){
     var instrumentElement = "<div class='text-center col-md-3 border rounded mx-2'>"
     instrumentElement += "<div class='row'>"
-    instrumentElement += " <div class='pic'>" + "<img src=" + instrument.imagePath + " class='img-fluid' alt='Responsive image'></div></div>"
+    instrumentElement += " <div class='pic'>" + "<img src=" + instrument.imagePath + " class='img-fluid' alt='לא קיימת תמונה'></div></div>"
     instrumentElement += "<div class='row'>"
     instrumentElement += "<div class='col-12'>"
     instrumentElement += "<div class='product'>" + instrument.name+ "</div>"
@@ -88,6 +90,10 @@ function showOnSite(instrument){
     document.getElementById("instruments").innerHTML += instrumentElement
 }
 
-window.onload = function() {
-    allInstruments.forEach(showOnSite)
-}
+document.querySelector('#dropdown').addEventListener('click', function(e){
+    allInstruments.forEach(function(instrument){
+        if(e.innerHTML == instrument.instrumentType.name){
+            showOnSite(instrument)
+        }
+    })
+})
