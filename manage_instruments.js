@@ -114,3 +114,50 @@ function filterByText(){
             showOnSite(instrument)
     }})
 }
+
+function filterByPrice(){
+    var tempInstruments = []
+    document.getElementById("instruments").innerHTML = ""
+    if(document.getElementById("checkbox1").checked){
+        instrumentsCurrentShowing.forEach(function(instrument){
+            if(instrument.price < 500){
+                showOnSite(instrument)
+                tempInstruments.push(instrument)
+            }
+        })
+    }else if(document.getElementById("checkbox2").checked){
+        instrumentsCurrentShowing.forEach(function(instrument){
+            if(instrument.price >= 500 && instrument.price < 1000){
+                showOnSite(instrument)
+                tempInstruments.push(instrument)
+            }
+        })
+    }else if(document.getElementById("checkbox3").checked){
+        instrumentsCurrentShowing.forEach(function(instrument){
+            if(instrument.price > 1000 && instrument.price <= 1500){
+                showOnSite(instrument)
+                tempInstruments.push(instrument)
+            }
+        })
+    }else if(document.getElementById("checkbox4").checked){
+        instrumentsCurrentShowing.forEach(function(instrument){
+            if(instrument.price > 1500 && instrument.price <= 2000){
+                showOnSite(instrument)
+                tempInstruments.push(instrument)
+            }
+        })
+    }else if(document.getElementById("checkbox5").checked){
+        instrumentsCurrentShowing.forEach(function(instrument){
+            if(instrument.price > 2000){
+                showOnSite(instrument)
+                tempInstruments.push(instrument)
+            }
+        })
+    }else{
+        instrumentsCurrentShowing.forEach(function(instrument){
+            showOnSite(instrument)
+            tempInstruments.push(instrument)
+        })
+    }
+    instrumentsCurrentShowing = tempInstruments
+}
